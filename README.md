@@ -18,7 +18,6 @@ python -c "import torch; print(torch._C._GLIBCXX_USE_CXX11_ABI)"
 FROM nvcr.io/nvidia/pytorch:22.12-py3
 
 # Environment variables
-ARG PYTHON_VERSION=3.8.15
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai LANG=C.UTF-8 LC_ALL=C.UTF-8 PIP_NO_CACHE_DIR=1
 
