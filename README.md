@@ -58,7 +58,7 @@ ENV JUPYTER_RUNTIME_DIR=/run/determined/jupyter/runtime
 RUN git clone https://github.com/LingzheZhao/determinedai-container-scripts &&\
     cd determinedai-container-scripts &&\
     git checkout v0.1 &&\
-    pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple &&\
+    pip config set global.index-url https://mirrors.westlake.edu.cn/pypi/simple &&\
     pip install determined && pip uninstall -y determined &&\
     pip install -r notebook-requirements.txt &&\
     pip install -r additional-requirements.txt &&\
@@ -117,7 +117,7 @@ RUN git clone https://github.com/LingzheZhao/determinedai-container-scripts &&\
     git checkout v0.1 &&\
     ./install_python.sh ${PYTHON_VERSION} &&\
     cp .condarc /opt/conda/.condarc &&\
-    pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple &&\
+    pip config set global.index-url https://mirrors.westlake.edu.cn/pypi/simple &&\
     pip install determined && pip uninstall -y determined &&\
     pip install -r notebook-requirements.txt &&\
     pip install -r additional-requirements.txt &&\
