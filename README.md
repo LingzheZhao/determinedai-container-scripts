@@ -37,7 +37,7 @@ RUN sed -i "s/archive.ubuntu.com/mirrors.ustc.edu.cn/g" /etc/apt/sources.list &&
         openssh-server openssh-client pkg-config nfs-common \
         ## Tools
         git curl wget unzip nano net-tools sudo htop iotop \
-        cloc rsync xz-utils software-properties-common \
+        cloc rsync screen tmux xz-utils software-properties-common \
     && rm /etc/ssh/ssh_host_ecdsa_key \
     && rm /etc/ssh/ssh_host_ed25519_key \
     && rm /etc/ssh/ssh_host_rsa_key \
@@ -93,7 +93,7 @@ RUN sed -i "s/archive.ubuntu.com/mirrors.ustc.edu.cn/g" /etc/apt/sources.list &&
         openssh-server openssh-client pkg-config nfs-common \
         ## Tools
         git curl wget unzip nano net-tools sudo htop iotop \
-        cloc rsync xz-utils software-properties-common \
+        cloc rsync screen tmux xz-utils software-properties-common \
     && rm /etc/ssh/ssh_host_ecdsa_key \
     && rm /etc/ssh/ssh_host_ed25519_key \
     && rm /etc/ssh/ssh_host_rsa_key \
