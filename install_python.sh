@@ -6,16 +6,16 @@ set -e
 PYTHON_VERSION=${1}
 
 CONDA_DIR="/opt/conda"
-CONDA_INSTALLER="Miniconda3-py39_4.12.0-Linux-x86_64.sh"
-CONDA_MD5="7843dd7d0a2c53b0df37ca8189672992"
-CONDA_URL="https://mirrors.bfsu.edu.cn/anaconda/miniconda/"
+CONDA_INSTALLER="Miniconda3-py39_23.5.2-0-Linux-x86_64.sh"
+CONDA_SHA256="9829d95f639bd0053b2ed06d1204e60644617bf37dd5cc57523732e0e8d64516"
+CONDA_URL="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/"
 
 mkdir -p /etc/determined/conda.d
 mkdir -p "${CONDA_DIR}"
 
 cd /tmp
 curl --retry 3 -fsSL -O "${CONDA_URL}/${CONDA_INSTALLER}"
-echo "${CONDA_MD5}  ${CONDA_INSTALLER}" | md5sum -c -
+echo "${CONDA_MD5}  ${CONDA_INSTALLER}" | sha256sum ${CONDA_INSTALLER}
 bash "./${CONDA_INSTALLER}" -u -b -p "${CONDA_DIR}"
 rm -f "./${CONDA_INSTALLER}"
 
