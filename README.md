@@ -2,18 +2,6 @@
 
 ## 1. Example usage with NVIDIA's base image
 
-### Note
-
-> P.S. PyTorch in NVIDIA's image is built with `_GLIBCXX_USE_CXX11_ABI=1`, which is useful when developing custom `cpp_extension`.
-> 
-> You can check it with:
-
-```sh
-python -c "import torch; print(torch._C._GLIBCXX_USE_CXX11_ABI)"
-```
-
-### Dockerfile
-
 ```Dockerfile
 FROM nvcr.io/nvidia/pytorch:22.12-py3
 
@@ -62,15 +50,24 @@ RUN git clone https://github.com/LingzheZhao/determinedai-container-scripts &&\
     pip install determined && pip uninstall -y determined &&\
     pip install -r notebook-requirements.txt &&\
     pip install -r additional-requirements.txt &&\
+    jupyter labextension disable "@jupyterlab/apputils-extension:announcements" &&\
     ./add_det_nobody_user.sh &&\
     ./install_libnss_determined.sh &&\
     rm -rf /tmp/*
 ```
 
+> P.S. PyTorch in NVIDIA's image is built with `_GLIBCXX_USE_CXX11_ABI=1`, which is useful when developing custom `cpp_extension`.
+> 
+> You can check it with:
+
+```sh
+python -c "import torch; print(torch._C._GLIBCXX_USE_CXX11_ABI)"
+```
+
 ## 2. Example Usage with CUDA base image + Conda
 
 ```Dockerfile
-FROM nvcr.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
+FROM nvcr.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 # Environment variables
 ARG PYTHON_VERSION=3.8.15
@@ -121,6 +118,7 @@ RUN git clone https://github.com/LingzheZhao/determinedai-container-scripts &&\
     pip install determined && pip uninstall -y determined &&\
     pip install -r notebook-requirements.txt &&\
     pip install -r additional-requirements.txt &&\
+    jupyter labextension disable "@jupyterlab/apputils-extension:announcements" &&\
     ./add_det_nobody_user.sh &&\
     ./install_libnss_determined.sh &&\
     rm -rf /tmp/*
